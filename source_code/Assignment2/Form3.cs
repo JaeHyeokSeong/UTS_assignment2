@@ -53,6 +53,10 @@ namespace Assignment2
 
         private void toolStripComboBox1_DropDownClosed(object sender, EventArgs e)
         {
+            if (!editAble)
+            {
+                return;
+            }
             bool isBold = richTextBox1.SelectionFont.Bold;
             bool isItalic = richTextBox1.SelectionFont.Italic;
             bool isUnderLine = richTextBox1.SelectionFont.Underline;
@@ -87,7 +91,14 @@ namespace Assignment2
             }
             else
             {
-                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, richTextBox1.Font.Size + fontSizeDifference, FontStyle.Regular);
+                try
+                {
+                    richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, richTextBox1.Font.Size + fontSizeDifference, FontStyle.Regular);
+                }
+                catch (Exception)
+                {
+
+                }
             }
             // richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, richTextBox1.Font.Size + fontSizeDifference, richTextBox1.SelectionFont.Bold ? FontStyle.Bold : FontStyle.Regular);
 
@@ -100,6 +111,11 @@ namespace Assignment2
         /// <param name="e"></param>
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
+            if (!editAble)
+            {
+                MessageBox.Show("Permission denied", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             float fontSize = richTextBox1.SelectionFont.Size;
             bool isBold = richTextBox1.SelectionFont.Bold;
             bool isItalic = richTextBox1.SelectionFont.Italic;
@@ -150,6 +166,11 @@ namespace Assignment2
         /// <param name="e"></param>
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
+            if (!editAble)
+            {
+                MessageBox.Show("Permission denied", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             float fontSize = richTextBox1.SelectionFont.Size;
             bool isItalic = richTextBox1.SelectionFont.Italic;
             bool isBold = richTextBox1.SelectionFont.Bold;
@@ -194,6 +215,10 @@ namespace Assignment2
 
         private void toolStripButton_underline_Click(object sender, EventArgs e)
         {
+            if (!editAble)
+            {
+                return;
+            }
             float fontSize = richTextBox1.SelectionFont.Size;
             bool isUnderLine = richTextBox1.SelectionFont.Underline;
             bool isBold = richTextBox1.SelectionFont.Bold;
@@ -342,6 +367,12 @@ namespace Assignment2
         /// </summary>
         private void SaveFile()
         {
+            if (!editAble)
+            {
+                MessageBox.Show("Permission denied", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (string.IsNullOrEmpty(fileName))
             {
                 SaveAsFile();
@@ -423,6 +454,15 @@ namespace Assignment2
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
             SaveAsFile();
+        }
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
+        {
+            if (!editAble)
+            {
+                MessageBox.Show("Permission denied", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
         }
     }
 }

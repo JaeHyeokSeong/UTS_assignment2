@@ -324,6 +324,7 @@
             this.toolStripComboBox1.Size = new System.Drawing.Size(121, 33);
             this.toolStripComboBox1.ToolTipText = "Font Size";
             this.toolStripComboBox1.DropDownClosed += new System.EventHandler(this.toolStripComboBox1_DropDownClosed);
+            this.toolStripComboBox1.Click += new System.EventHandler(this.toolStripComboBox1_Click);
             // 
             // toolStripButton8
             // 
